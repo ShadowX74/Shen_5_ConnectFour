@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * *********************************************************************
+ * Program Filename: ConnectFour.java
+ * Author: Shen, Xiangyu
+ * Date: 01/16/1¶
+ * Description: Runs a connect four game
+ * Input: Keyboard
+ * Output: Console
+ **********************************************************************
  */
 package connectfour;
 
@@ -15,7 +20,6 @@ public class ConnectFour {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         Game.menu();
     }
 }

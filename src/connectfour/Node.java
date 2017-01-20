@@ -10,13 +10,24 @@ package connectfour;
  * @author ShadowX
  */
 public class Node {
-
+    //what player the node is occupied by
     private int value = 0;
+    //Node links
     private Node up, down, left, right, upleft, upright, downleft, downright;
 
     public Node() {
     }
     
+     /**
+     * *********************************************************************
+     * Method: Getters and Setters
+     * Description: gets and sets variables for each node
+     * Parameters: N/A, the value to set the variable as
+     * Pre-conditions: Called relative to each object to set and get their 
+     * variables
+     * Post-conditions: variables set or returned
+     * *********************************************************************
+     */
     public int getValue() {
         return value;
     }
