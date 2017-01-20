@@ -24,13 +24,11 @@ public class Game {
     //current node we are working with
     static Node current;
 
-     /**
+    /**
      * *********************************************************************
-     * Method: menu
-     * Description: Asks the user what they want to do and executes it
-     * Parameters: N/A
-     * Pre-conditions: Called in Main
-     * Post-conditions: User commands run
+     * Method: menu Description: Asks the user what they want to do and executes
+     * it Parameters: N/A Pre-conditions: Called in Main Post-conditions: User
+     * commands run
      * *********************************************************************
      */
     public static void menu() {
@@ -42,7 +40,7 @@ public class Game {
 
             String choice = scan.nextLine().toUpperCase();
             choice = scan.nextLine().toUpperCase();
-            
+
             if (choice.equals("A")) {
                 if (game() == 1) {
                     System.out.println("Player 1 wins!");
@@ -60,11 +58,9 @@ public class Game {
 
     /**
      * *********************************************************************
-     * Method: play3
-     * Description: plays a best of 3 round of connect four games
-     * Parameters: N/A
-     * Pre-conditions: Called in menu after user chooses Bo3
-     * Post-conditions: 2-3 connect four games run, winner chosen, user 
+     * Method: play3 Description: plays a best of 3 round of connect four games
+     * Parameters: N/A Pre-conditions: Called in menu after user chooses Bo3
+     * Post-conditions: 2-3 connect four games run, winner chosen, user
      * redirected back to menu
      * *********************************************************************
      */
@@ -93,13 +89,11 @@ public class Game {
         }
     }
 
-     /**
+    /**
      * *********************************************************************
-     * Method: game
-     * Description: runs a game of connect four
-     * Parameters: N/A
-     * Pre-conditions: User chooses to play connect four
-     * Post-conditions: Game run and winner chosen
+     * Method: game Description: runs a game of connect four Parameters: N/A
+     * Pre-conditions: User chooses to play connect four Post-conditions: Game
+     * run and winner chosen
      * *********************************************************************
      */
     private static int game() {
@@ -139,23 +133,21 @@ public class Game {
             }
             counter++;
 
-            for (int i = 0; i < 1000; i++) {
-                System.out.println("");
-            }
+//            for (int i = 0; i < 1000; i++) {
+//                System.out.println("");
+//            }
         }
         return 1;
     }
 
-     /**
+    /**
      * *********************************************************************
-     * Method: checkDown
-     * Description: Places new piece as far down as it will go in user
-     * specified column
-     * Parameters: Board b, int c, int r, int player
-     * Pre-conditions: Called in when a player places a piece in the board b
-     * at the column c. R is the row currently being checked and player is
-     * the value the desired location is set to
-     * Post-conditions: Piece placed in correct location, game goes on
+     * Method: checkDown Description: Places new piece as far down as it will go
+     * in user specified column Parameters: Board b, int c, int r, int player
+     * Pre-conditions: Called in when a player places a piece in the board b at
+     * the column c. R is the row currently being checked and player is the
+     * value the desired location is set to Post-conditions: Piece placed in
+     * correct location, game goes on
      * *********************************************************************
      */
     private static boolean checkDown(Board b, int c, int r, int player) {
@@ -187,14 +179,12 @@ public class Game {
         return keepGoing;
     }
 
-     /**
+    /**
      * *********************************************************************
-     * Method: checkWin
-     * Description: checks if a user has won
-     * Parameters: int c, int r
-     * Pre-conditions: called after a user moves at column c and row r to
-     * see if the move has won them the game
-     * Post-conditions: boolean returned on whether game has been won or not
+     * Method: checkWin Description: checks if a user has won Parameters: int c,
+     * int r Pre-conditions: called after a user moves at column c and row r to
+     * see if the move has won them the game Post-conditions: boolean returned
+     * on whether game has been won or not
      * *********************************************************************
      */
     private static boolean checkWin(int c, int r) {
@@ -207,24 +197,73 @@ public class Game {
                 return true;
             }
         }
-//        if (current.getValue() == current.getLeft().getValue()) {
-//            left = true;
-//        }
-//        if (current.getValue() == current.getRight().getValue()) {
-//            right = true;
-//        }
-//        if (current.getValue() == current.getUpleft().getValue()) {
-//            upleft = true;
-//        }
-//        if (current.getValue() == current.getDownleft().getValue()) {
-//            downleft = true;
-//        }
-//        if (current.getValue() == current.getDownright().getValue()) {
-//            downright = true;
-//        }
-//        if (current.getValue() == current.getUpright().getValue()) {
-//            upright = true;
-//        }
+        if (current.getLeft() != null) {
+            if (current.getValue() == current.getLeft().getValue()) {
+                left = true;
+            }
+        }
+        if (current.getRight() != null) {
+            if (current.getValue() == current.getRight().getValue()) {
+                right = true;
+            }
+        }
+        if (current.getUpleft() != null) {
+            if (current.getValue() == current.getUpleft().getValue()) {
+                upleft = true;
+            }
+        }
+        if (current.getDownleft() != null) {
+            if (current.getValue() == current.getDownleft().getValue()) {
+                downleft = true;
+            }
+        }
+        if (current.getDownright() != null) {
+            if (current.getValue() == current.getDownright().getValue()) {
+                downright = true;
+            }
+        }
+        if (current.getUpright() != null) {
+            if (current.getValue() == current.getUpright().getValue()) {
+                upright = true;
+            }
+        }
+        System.out.println(left);
+        System.out.println(right);
+        if (left && right) {
+            System.out.println(current.getRight().getRight().getValue());
+            if (current.getRight().getRight() != null) {
+                if (current.getRight().getRight().getValue() == current.getValue()) {
+                    return true;
+                }
+            }
+            if (current.getLeft().getLeft() != null) {
+                if (current.getLeft().getLeft().getValue() == current.getValue()) {
+                    return true;
+                }
+            }
+        }
+        
+        if (left) {
+            if (current.getLeft().getLeft() != null) {
+                if (current.getLeft().getLeft().getLeft() != null 
+                        && current.getLeft().getLeft().getValue() == current.getValue()) {
+                    if (current.getLeft().getLeft().getLeft().getValue() == current.getValue()) {
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        if (right) {
+            if (current.getRight().getRight() != null) {
+                if (current.getRight().getRight().getRight() != null 
+                        && current.getRight().getRight().getValue() == current.getValue()) {
+                    if (current.getRight().getRight().getRight().getValue() == current.getValue()) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 }
